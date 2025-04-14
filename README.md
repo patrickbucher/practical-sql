@@ -1,5 +1,8 @@
 # Practical SQL
 
+- Book: [Practical SQL, 2nd Edition](https://github.com/anthonydb/practical-sql-2/)
+- Repository: [anthonydb/practical-sql-2](https://github.com/anthonydb/practical-sql-2/)
+
 ## Setup
 
 ### Arch Linux
