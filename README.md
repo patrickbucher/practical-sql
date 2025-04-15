@@ -54,3 +54,41 @@ provided by the operating system. The authentication method can be switched
 from `peer` to `md5` in `pg_hba.conf`. Its path can be obtained as follows:
 
     # show hba_file;
+
+### Create Databases and Tables
+
+Create a database `company`:
+
+```sql
+create database company;
+```
+
+Create a table `employee`:
+
+```sql
+create table employee (
+    id serial,
+    first_name varchar(50),
+    last_name varchar(50),
+    born date,
+    hired date,
+    salary numeric
+);
+```
+
+Insert some records:
+
+```sql
+insert into employee
+    (first_name, last_name, born, hired, salary)
+values
+    ('Bertram', 'Gilfoyle', '1983-05-13', '2012-04-01', 120000),
+    ('Erlich', 'Bachmann', '1975-01-31', '2012-01-01', 250000),
+    ('Jared', 'Dunn', '1978-11-20', '2012-08-01', 80000);
+```
+
+## Using `psql`
+
+Execute query from a script (`employee.sql`) on a particular database (`company`):
+
+    psql company -f employee.sql
