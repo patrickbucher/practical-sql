@@ -87,6 +87,25 @@ values
     ('Jared', 'Dunn', '1978-11-20', '2012-08-01', 80000);
 ```
 
+## Selecting Data
+
+PostgreSQL supports various comparison and matching operators:
+
+- `=`: equality
+- `<>`: inequality
+- `!=`: inequality (non-standard!)
+- `<`, `>`, `<=`, `>=`: less than, greater than, less than or equal, greater than or equal
+- `between`: range check (inclusive on both ends), e.g. `where salary between 100000 and 200000`
+- `in`: match in a set of values, e.g. `where grade in ('A', 'B', 'C')`
+- `like`: pattern matching (case sensitive)
+- `ilike`: pattern matching (non-standard!)
+- `not`: negation of condition
+
+The `like` and `ilike` operators support patterns using wildcards:
+
+- `%`: one or more characters
+- `_`: one character
+
 ## Using `psql`
 
 Execute query from a script (`employee.sql`) on a particular database (`company`):
