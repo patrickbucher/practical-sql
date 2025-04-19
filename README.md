@@ -161,10 +161,45 @@ Execute query from a script (`employee.sql`) on a particular database (`company`
 
     psql company -f employee.sql
 
-### Export
+### Import/Export
+
+Import from CSV:
+
+```sql
+copy TABLE from 'PATH' with (format csv, header, delimiter ',', quote '"');
+```
 
 Export to CSV:
 
+```sql
+copy TABLE to 'PATH' with (format csv, header, delimiter ',', quote '"');
 ```
-copy TABLE to 'PATH' with (format csv, header, delimiter ',');
+
+Options:
+
+- format: `csv`, `text`, `binary`
+- header: ignore first row (PostgreSQL won't match CSV headers to table columns)
+- delimiter: field delimiter (`,` by default)
+- quote: quotation character (`"` by default)
+
+Import/Export only a subset of columns:
+
+```sql
+copy table (col1, col2, …, col3) …
+```
+
+Since PostgreSQL 12, import also works with a `where` clause.
+
+Create a temporary table for import:
+
+```sql
+create temporary table NAME (like ORIGINAL_TABLE_NAME including all);
+```
+
+Using `including all`, indexes, constraints and the like are also copied from the original table.
+
+Export a query result:
+
+```sql
+copy (select …) …
 ```
